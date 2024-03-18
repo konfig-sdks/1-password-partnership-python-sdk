@@ -1,0 +1,23 @@
+"""
+    1Password Partnership API
+
+    Trusted by more than 100,000 businesses to protect their data, 1Password gives you complete control over passwords and other sensitive business information.   As an integral layer of the Identity and Access Management (IAM) stack, 1Password protects all employee accounts – even those you aren't aware of. Give employees secure access to any app or service and safely share everything you need to work together – including logins, documents, credit cards, and more – while keeping everything else private.  1Password is easy to deploy and integrates with Azure AD, Okta, OneLogin, and Slack, so you can automatically provision employees using the systems you already trust. It's simple to manage and fits seamlessly into your team's workflow, so you can secure your business without compromising productivity.
+
+    The version of the OpenAPI document: 2.0.0
+    Contact: partners@1password.com
+    Created by: https://www.1password.partners/English/
+"""
+
+from typing import Callable, Generic, TypeVar, Any
+
+F = TypeVar("F", bound=Callable[..., Any])
+
+
+class copy_signature(Generic[F]):
+    def __init__(self, func: F, *args) -> None:
+        self.func = func
+
+    def __call__(self, *args, **kwargs) -> F:
+        if len(args) == 1:
+            return args[0]
+        return self.func(*args, **kwargs)
